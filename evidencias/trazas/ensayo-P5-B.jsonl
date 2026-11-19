@@ -1,0 +1,3 @@
+{"t": 1795059079.692, "hilo": "ensayo-P5-B", "tipo": "mensaje_usuario", "datos": {"texto": "Conserva los datos y compara", "rol": "observador", "meta": 1.0}}
+{"t": 1795059079.698, "hilo": "ensayo-P5-B", "tipo": "herramienta_configurar_escenario", "datos": {"argumentos": {}}}
+{"t": 1795059079.702, "hilo": "ensayo-P5-B", "tipo": "respuesta_agente", "datos": {"texto": "Faltan datos: personas, media de llegadas y servicio."}}

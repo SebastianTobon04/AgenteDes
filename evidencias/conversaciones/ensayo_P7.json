@@ -1,0 +1,88 @@
+{
+  "tipo_modelo": "ENSAYO",
+  "modelo": "ModeloEnsayo (guion fijo)",
+  "hilo": "ensayo-P7",
+  "contexto": {
+    "rol": "operador",
+    "meta": 1.0,
+    "limite_personas": 100
+  },
+  "turnos": [],
+  "mensajes": [
+    {
+      "tipo": "human",
+      "contenido": "evalúa"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "k1",
+          "nombre": "configurar_escenario",
+          "args": {
+            "n_personas": 20,
+            "media_llegadas": 2,
+            "distribucion_servicio": "triangular",
+            "minimo_servicio": 1,
+            "moda_servicio": 3,
+            "maximo_servicio": 5
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Escenario fijado: {'n_personas': 20, 'llegadas': {'distribucion': 'exponencial', 'media': 2.0}, 'servicio': {'distribucion': 'triangular', 'minimo': 1.0, 'moda': 3.0, 'maximo': 5.0}, 'replicas': 30, 'semilla_base': 2026, 'capacidades': [1, 2, 3]}. Resultados, recomendación y decisión anteriores quedaron invalidados; falta simular. Valores por defecto aplicados: réplicas=30 (valor documentado por defecto); semilla_base=2026 (valor documentado por defecto).",
+      "responde_a": "k1",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "k2",
+          "nombre": "simular_capacidades",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "ERROR MCP: no se pudo completar la evaluación (Servidor MCP no disponible o con fallo en http://127.0.0.1:9/mcp: ConnectError: All connection attempts failed). No hay resultados nuevos ni se puede registrar una decisión. Informa el fallo al usuario y sugiere iniciar el servidor MCP (python servidor_mcp.py).",
+      "responde_a": "k2",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "El servidor MCP no está disponible."
+    }
+  ],
+  "estado_final": {
+    "escenario": {
+      "n_personas": 20,
+      "llegadas": {
+        "distribucion": "exponencial",
+        "media": 2.0
+      },
+      "servicio": {
+        "distribucion": "triangular",
+        "minimo": 1.0,
+        "moda": 3.0,
+        "maximo": 5.0
+      },
+      "replicas": 30,
+      "semilla_base": 2026,
+      "capacidades": [
+        1,
+        2,
+        3
+      ]
+    },
+    "recomendacion": null,
+    "decision": null,
+    "resultados_agregados": null,
+    "archivos": null
+  }
+}

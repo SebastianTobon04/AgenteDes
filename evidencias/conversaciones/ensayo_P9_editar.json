@@ -1,0 +1,209 @@
+{
+  "tipo_modelo": "ENSAYO",
+  "modelo": "ModeloEnsayo (guion fijo)",
+  "hilo": "ensayo-P9-editar",
+  "contexto": {
+    "rol": "operador",
+    "meta": 1.0,
+    "limite_personas": 100
+  },
+  "turnos": [
+    {
+      "interrupcion": {
+        "action_requests": [
+          {
+            "name": "registrar_decision",
+            "args": {
+              "capacidad": 3,
+              "nota": "nota original"
+            },
+            "description": "REVISIÓN HUMANA — registro de decisión\nCapacidad propuesta: 3 puesto(s)  |  Recomendación calculada en Python: 3\nMeta de espera: 1.0 min  |  Rol de la sesión: operador\nConfiguración evaluada: {'n_personas': 20, 'llegadas': {'distribucion': 'exponencial', 'media': 2.0}, 'servicio': {'distribucion': 'triangular', 'minimo': 1.0, 'moda': 3.0, 'maximo': 5.0}, 'replicas': 30, 'semilla_base': 2026, 'capacidades': [1, 2, 3]}\nComparación de alternativas:\n| Puestos | Espera prom. (min) | Desv. muestral | Salida última prom. (min) | ¿Cumple meta? |\n|---|---|---|---|---|\n| 1 | 11.8810 | 4.5455 | 62.21 | no |\n| 2 | 1.3759 | 1.3775 | 42.16 | no |\n| 3 | 0.2505 | 0.3575 | 39.94 | sí |\nRéplicas por capacidad: 30  |  Archivos: {'resultados_csv': 'evidencias\\\\simulaciones\\\\resultados_ea3a8572363e.csv', 'muestras_csv': 'evidencias\\\\simulaciones\\\\muestras_ea3a8572363e.csv', 'resumen_json': 'evidencias\\\\simulaciones\\\\resumen_ea3a8572363e.json'}\nNota justificativa: nota original"
+          }
+        ],
+        "review_configs": [
+          {
+            "action_name": "registrar_decision",
+            "allowed_decisions": [
+              "approve",
+              "edit",
+              "reject"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "humano": "edit"
+    }
+  ],
+  "mensajes": [
+    {
+      "tipo": "human",
+      "contenido": "evalúa"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "a1",
+          "nombre": "configurar_escenario",
+          "args": {
+            "n_personas": 20,
+            "media_llegadas": 2,
+            "distribucion_servicio": "triangular",
+            "minimo_servicio": 1,
+            "moda_servicio": 3,
+            "maximo_servicio": 5
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Escenario fijado: {'n_personas': 20, 'llegadas': {'distribucion': 'exponencial', 'media': 2.0}, 'servicio': {'distribucion': 'triangular', 'minimo': 1.0, 'moda': 3.0, 'maximo': 5.0}, 'replicas': 30, 'semilla_base': 2026, 'capacidades': [1, 2, 3]}. Resultados, recomendación y decisión anteriores quedaron invalidados; falta simular. Valores por defecto aplicados: réplicas=30 (valor documentado por defecto); semilla_base=2026 (valor documentado por defecto).",
+      "responde_a": "a1",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "a2",
+          "nombre": "simular_capacidades",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Réplicas por capacidad: 30. Meta: 1.0 min.\n| Puestos | Espera prom. (min) | Desv. muestral | Salida última prom. (min) | ¿Cumple meta? |\n|---|---|---|---|---|\n| 1 | 11.8810 | 4.5455 | 62.21 | no |\n| 2 | 1.3759 | 1.3775 | 42.16 | no |\n| 3 | 0.2505 | 0.3575 | 39.94 | sí |\nRecomendación calculada en Python: 3.\nArchivos: {'resultados_csv': 'evidencias\\\\simulaciones\\\\resultados_ea3a8572363e.csv', 'muestras_csv': 'evidencias\\\\simulaciones\\\\muestras_ea3a8572363e.csv', 'resumen_json': 'evidencias\\\\simulaciones\\\\resumen_ea3a8572363e.json'}\nNota: es una estimación por simulación; no garantiza que cada persona o réplica cumpla la meta.",
+      "responde_a": "a2",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "Evaluación completa (texto del modelo de ensayo)."
+    },
+    {
+      "tipo": "human",
+      "contenido": "registra"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "r1",
+          "nombre": "registrar_decision",
+          "args": {
+            "capacidad": 3,
+            "nota": "Nota corregida por la persona revisora"
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Decisión registrada: 3 puesto(s), meta 1.0 min. Nota: Nota corregida por la persona revisora",
+      "responde_a": "r1",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "Fin (texto del modelo de ensayo)."
+    }
+  ],
+  "estado_final": {
+    "escenario": {
+      "n_personas": 20,
+      "llegadas": {
+        "distribucion": "exponencial",
+        "media": 2.0
+      },
+      "servicio": {
+        "distribucion": "triangular",
+        "minimo": 1.0,
+        "moda": 3.0,
+        "maximo": 5.0
+      },
+      "replicas": 30,
+      "semilla_base": 2026,
+      "capacidades": [
+        1,
+        2,
+        3
+      ]
+    },
+    "recomendacion": {
+      "capacidad": 3,
+      "meta": 1.0,
+      "huella": "ea3a8572363e",
+      "promedios": {
+        "1": 11.88101807699591,
+        "2": 1.3759454072922368,
+        "3": 0.25051421718375105
+      },
+      "regla": "menor capacidad con promedio de esperas promedio <= meta"
+    },
+    "decision": {
+      "capacidad": 3,
+      "meta": 1.0,
+      "configuracion": {
+        "n_personas": 20,
+        "llegadas": {
+          "distribucion": "exponencial",
+          "media": 2.0
+        },
+        "servicio": {
+          "distribucion": "triangular",
+          "minimo": 1.0,
+          "moda": 3.0,
+          "maximo": 5.0
+        },
+        "replicas": 30,
+        "semilla_base": 2026,
+        "capacidades": [
+          1,
+          2,
+          3
+        ]
+      },
+      "promedios": {
+        "1": 11.88101807699591,
+        "2": 1.3759454072922368,
+        "3": 0.25051421718375105
+      },
+      "nota": "Nota corregida por la persona revisora",
+      "rol": "operador",
+      "huella": "ea3a8572363e",
+      "registrado_en": "2026-11-19T03:31:23.277812+00:00"
+    },
+    "resultados_agregados": {
+      "1": {
+        "replicas": 30,
+        "espera_promedio_media": 11.88101807699591,
+        "salida_ultima_media": 62.21219998547347,
+        "espera_desviacion_muestral": 4.545517483243134
+      },
+      "2": {
+        "replicas": 30,
+        "espera_promedio_media": 1.3759454072922368,
+        "salida_ultima_media": 42.15850420687739,
+        "espera_desviacion_muestral": 1.3774631502548065
+      },
+      "3": {
+        "replicas": 30,
+        "espera_promedio_media": 0.25051421718375105,
+        "salida_ultima_media": 39.938507597578116,
+        "espera_desviacion_muestral": 0.3574698115226598
+      }
+    },
+    "archivos": {
+      "resultados_csv": "evidencias\\simulaciones\\resultados_ea3a8572363e.csv",
+      "muestras_csv": "evidencias\\simulaciones\\muestras_ea3a8572363e.csv",
+      "resumen_json": "evidencias\\simulaciones\\resumen_ea3a8572363e.json"
+    }
+  }
+}

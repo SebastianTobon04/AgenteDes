@@ -1,0 +1,42 @@
+{
+  "configuracion": {
+    "n_personas": 20,
+    "llegadas": {
+      "distribucion": "exponencial",
+      "media": 2.0
+    },
+    "servicio": {
+      "distribucion": "uniforme",
+      "minimo": 1.0,
+      "moda": null,
+      "maximo": 3.0
+    },
+    "replicas": 30,
+    "semilla_base": 2026,
+    "capacidades": [
+      1,
+      2,
+      3
+    ]
+  },
+  "agregados": {
+    "1": {
+      "replicas": 30,
+      "espera_promedio_media": 3.983347360713538,
+      "salida_ultima_media": 45.400094557121214,
+      "espera_desviacion_muestral": 2.896694897348814
+    },
+    "2": {
+      "replicas": 30,
+      "espera_promedio_media": 0.3708287079969553,
+      "salida_ultima_media": 39.06364404149459,
+      "espera_desviacion_muestral": 0.4436246582554822
+    },
+    "3": {
+      "replicas": 30,
+      "espera_promedio_media": 0.06414099068307952,
+      "salida_ultima_media": 38.74017939766921,
+      "espera_desviacion_muestral": 0.11489965983074475
+    }
+  }
+}

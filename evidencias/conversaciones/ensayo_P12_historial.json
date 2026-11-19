@@ -1,0 +1,122 @@
+{
+  "tipo_modelo": "ENSAYO",
+  "modelo": "ModeloEnsayo (guion fijo)",
+  "hilo": "ensayo-P12-historial",
+  "contexto": {
+    "rol": "observador",
+    "meta": 1.0,
+    "limite_personas": 100
+  },
+  "turnos": [],
+  "mensajes": [
+    {
+      "tipo": "human",
+      "contenido": "consulta 2"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "q2",
+          "nombre": "recomendar_capacidad_actual",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Réplicas por capacidad: 30. Meta: 1.0 min.\n| Puestos | Espera prom. (min) | Desv. muestral | Salida última prom. (min) | ¿Cumple meta? |\n|---|---|---|---|---|\n| 1 | 11.8810 | 4.5455 | 62.21 | no |\n| 2 | 1.3759 | 1.3775 | 42.16 | no |\n| 3 | 0.2505 | 0.3575 | 39.94 | sí |\nRecomendación calculada en Python: 3.\nArchivos: {'resultados_csv': 'evidencias\\\\simulaciones\\\\resultados_ea3a8572363e.csv', 'muestras_csv': 'evidencias\\\\simulaciones\\\\muestras_ea3a8572363e.csv', 'resumen_json': 'evidencias\\\\simulaciones\\\\resumen_ea3a8572363e.json'}\nNota: es una estimación por simulación; no garantiza que cada persona o réplica cumpla la meta.",
+      "responde_a": "q2",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "Turno 2"
+    },
+    {
+      "tipo": "human",
+      "contenido": "consulta 3"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "q3",
+          "nombre": "recomendar_capacidad_actual",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Réplicas por capacidad: 30. Meta: 1.0 min.\n| Puestos | Espera prom. (min) | Desv. muestral | Salida última prom. (min) | ¿Cumple meta? |\n|---|---|---|---|---|\n| 1 | 11.8810 | 4.5455 | 62.21 | no |\n| 2 | 1.3759 | 1.3775 | 42.16 | no |\n| 3 | 0.2505 | 0.3575 | 39.94 | sí |\nRecomendación calculada en Python: 3.\nArchivos: {'resultados_csv': 'evidencias\\\\simulaciones\\\\resultados_ea3a8572363e.csv', 'muestras_csv': 'evidencias\\\\simulaciones\\\\muestras_ea3a8572363e.csv', 'resumen_json': 'evidencias\\\\simulaciones\\\\resumen_ea3a8572363e.json'}\nNota: es una estimación por simulación; no garantiza que cada persona o réplica cumpla la meta.",
+      "responde_a": "q3",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "Turno 3"
+    }
+  ],
+  "estado_final": {
+    "escenario": {
+      "n_personas": 20,
+      "llegadas": {
+        "distribucion": "exponencial",
+        "media": 2.0
+      },
+      "servicio": {
+        "distribucion": "triangular",
+        "minimo": 1.0,
+        "moda": 3.0,
+        "maximo": 5.0
+      },
+      "replicas": 30,
+      "semilla_base": 2026,
+      "capacidades": [
+        1,
+        2,
+        3
+      ]
+    },
+    "recomendacion": {
+      "capacidad": 3,
+      "meta": 1.0,
+      "huella": "ea3a8572363e",
+      "promedios": {
+        "1": 11.88101807699591,
+        "2": 1.3759454072922368,
+        "3": 0.25051421718375105
+      },
+      "regla": "menor capacidad con promedio de esperas promedio <= meta"
+    },
+    "decision": null,
+    "resultados_agregados": {
+      "1": {
+        "replicas": 30,
+        "espera_promedio_media": 11.88101807699591,
+        "salida_ultima_media": 62.21219998547347,
+        "espera_desviacion_muestral": 4.545517483243134
+      },
+      "2": {
+        "replicas": 30,
+        "espera_promedio_media": 1.3759454072922368,
+        "salida_ultima_media": 42.15850420687739,
+        "espera_desviacion_muestral": 1.3774631502548065
+      },
+      "3": {
+        "replicas": 30,
+        "espera_promedio_media": 0.25051421718375105,
+        "salida_ultima_media": 39.938507597578116,
+        "espera_desviacion_muestral": 0.3574698115226598
+      }
+    },
+    "archivos": {
+      "resultados_csv": "evidencias\\simulaciones\\resultados_ea3a8572363e.csv",
+      "muestras_csv": "evidencias\\simulaciones\\muestras_ea3a8572363e.csv",
+      "resumen_json": "evidencias\\simulaciones\\resumen_ea3a8572363e.json"
+    }
+  }
+}

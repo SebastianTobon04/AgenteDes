@@ -1,0 +1,45 @@
+{
+  "tipo_modelo": "ENSAYO",
+  "modelo": "ModeloEnsayo",
+  "hilo": "ensayo-P5-B",
+  "contexto": {
+    "rol": "observador",
+    "meta": 1.0,
+    "limite_personas": 100
+  },
+  "turnos": [],
+  "mensajes": [
+    {
+      "tipo": "human",
+      "contenido": "Conserva los datos y compara"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "x1",
+          "nombre": "configurar_escenario",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "FALTAN DATOS: este hilo no tiene escenario. Pide al usuario: cantidad de personas, media de llegadas, distribución del servicio. No simules todavía.",
+      "responde_a": "x1",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "Faltan datos: personas, media de llegadas y servicio."
+    }
+  ],
+  "estado_final": {
+    "escenario": null,
+    "recomendacion": null,
+    "decision": null,
+    "resultados_agregados": null,
+    "archivos": null
+  }
+}

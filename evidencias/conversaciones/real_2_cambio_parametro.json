@@ -1,0 +1,181 @@
+{
+  "tipo_modelo": "REAL",
+  "modelo": "openrouter:openrouter/free",
+  "hilo": "real-2-cambio",
+  "contexto": {
+    "rol": "operador",
+    "meta": 1.0,
+    "limite_personas": 100
+  },
+  "turnos": [
+    {
+      "usuario": "Necesito evaluar una oficina con 20 personas, llegadas exponenciales con media de 2 minutos, servicios triangulares entre 1 y 5 minutos con moda de 3, 30 réplicas y una meta de espera de 1 minuto. Recomiéndame cuántos puestos necesitamos",
+      "respuesta": "## Resultados de la simulación\n\nSe evaluaron 1, 2 y 3 puestos con 30 réplicas cada uno, para 20 personas, llegadas exponenciales (media 2 min), servicio triangular (mín 1, moda 3, máx 5 min) y meta de espera de 1.0 min:\n\n| Puestos | Espera promedio (min) | Desv. muestral entre réplicas | ¿Cumple meta (≤ 1.0 min)? |\n|---|---|---|---|\n| 1 | 11.8810 | 4.5455 | No |\n| 2 | 1.3759 | 1.3775 | No |\n| 3 | 0.2505 | 0.3575 | Sí |\n\n## Regla de decisión aplicada\n\nSe recomienda el **menor número de puestos cuyo promedio de las esperas promedio de las réplicas sea ≤ la meta (1.0 min)**. Con 1 y 2 puestos el promedio supera la meta (11.8810 y 1.3759 min); con 3 puestos es 0.2505 min, dentro de la meta.\n\n**Recomendación: 3 puestos de atención.**\n\n## Advertencia\n\nEsto es una **estimación por simulación**, no una garantía: no asegura que cada persona o cada réplica individual cumpla la meta de espera. Si deseas, puedo registrar esta decisión (requiere aprobación humana) o ajustar algún parámetro del escenario."
+    },
+    {
+      "usuario": "Ahora usa un servicio uniforme entre 1 y 3 minutos; conserva los demás datos",
+      "respuesta": "## Resultados de la simulación (servicio uniforme 1–3 min)\n\nSe evaluaron 1, 2 y 3 puestos con 30 réplicas cada uno, para 20 personas, llegadas exponenciales (media 2 min), servicio uniforme (mín 1, máx 3 min) y meta de espera de 1.0 min:\n\n| Puestos | Espera promedio (min) | Desv. muestral entre réplicas | ¿Cumple meta (≤ 1.0 min)? |\n|---|---|---|---|\n| 1 | 3.9833 | 2.8967 | No |\n| 2 | 0.3708 | 0.4436 | Sí |\n| 3 | 0.0641 | 0.1149 | Sí |\n\n## Regla de decisión aplicada\n\nSe recomienda el **menor número de puestos cuyo promedio de las esperas promedio de las réplicas sea ≤ la meta (1.0 min)**. Con 1 puesto el promedio es 3.9833 min (supera la meta); con 2 puestos es 0.3708 min (cumple). Por tanto, no es necesario evaluar 3 puestos para la recomendación, aunque también cumple.\n\n**Recomendación: 2 puestos de atención.**\n\n## Advertencia\n\nEsto es una **estimación por simulación**, no una garantía: no asegura que cada persona o cada réplica individual cumpla la meta de espera.\n\n¿Deseas registrar esta decisión o ajustar algún otro parámetro?"
+    }
+  ],
+  "mensajes": [
+    {
+      "tipo": "human",
+      "contenido": "Necesito evaluar una oficina con 20 personas, llegadas exponenciales con media de 2 minutos, servicios triangulares entre 1 y 5 minutos con moda de 3, 30 réplicas y una meta de espera de 1 minuto. Recomiéndame cuántos puestos necesitamos"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "Voy a configurar el escenario con los datos que indicas y luego evaluar las capacidades.\n",
+      "llamadas_herramienta": [
+        {
+          "id": "call_d81b5c2159c849ebbd6ef920",
+          "nombre": "configurar_escenario",
+          "args": {
+            "distribucion_servicio": "triangular",
+            "maximo_servicio": 5,
+            "media_llegadas": 2,
+            "minimo_servicio": 1,
+            "moda_servicio": 3,
+            "n_personas": 20,
+            "replicas": 30
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Escenario fijado: {'n_personas': 20, 'llegadas': {'distribucion': 'exponencial', 'media': 2.0}, 'servicio': {'distribucion': 'triangular', 'minimo': 1.0, 'moda': 3.0, 'maximo': 5.0}, 'replicas': 30, 'semilla_base': 2026, 'capacidades': [1, 2, 3]}. Resultados, recomendación y decisión anteriores quedaron invalidados; falta simular. Valores por defecto aplicados: semilla_base=2026 (valor documentado por defecto).",
+      "responde_a": "call_d81b5c2159c849ebbd6ef920",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "Escenario configurado correctamente. Ahora ejecuto la simulación para 1, 2 y 3 puestos.\n\n",
+      "llamadas_herramienta": [
+        {
+          "id": "call_73b79fb2becd4fbf94151e0d",
+          "nombre": "simular_capacidades",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Réplicas por capacidad: 30. Meta: 1.0 min.\n| Puestos | Espera prom. (min) | Desv. muestral | Salida última prom. (min) | ¿Cumple meta? |\n|---|---|---|---|---|\n| 1 | 11.8810 | 4.5455 | 62.21 | no |\n| 2 | 1.3759 | 1.3775 | 42.16 | no |\n| 3 | 0.2505 | 0.3575 | 39.94 | sí |\nRecomendación calculada en Python: 3.\nArchivos: {'resultados_csv': 'evidencias\\\\simulaciones\\\\resultados_ea3a8572363e.csv', 'muestras_csv': 'evidencias\\\\simulaciones\\\\muestras_ea3a8572363e.csv', 'resumen_json': 'evidencias\\\\simulaciones\\\\resumen_ea3a8572363e.json'}\nNota: es una estimación por simulación; no garantiza que cada persona o réplica cumpla la meta.",
+      "responde_a": "call_73b79fb2becd4fbf94151e0d",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "## Resultados de la simulación\n\nSe evaluaron 1, 2 y 3 puestos con 30 réplicas cada uno, para 20 personas, llegadas exponenciales (media 2 min), servicio triangular (mín 1, moda 3, máx 5 min) y meta de espera de 1.0 min:\n\n| Puestos | Espera promedio (min) | Desv. muestral entre réplicas | ¿Cumple meta (≤ 1.0 min)? |\n|---|---|---|---|\n| 1 | 11.8810 | 4.5455 | No |\n| 2 | 1.3759 | 1.3775 | No |\n| 3 | 0.2505 | 0.3575 | Sí |\n\n## Regla de decisión aplicada\n\nSe recomienda el **menor número de puestos cuyo promedio de las esperas promedio de las réplicas sea ≤ la meta (1.0 min)**. Con 1 y 2 puestos el promedio supera la meta (11.8810 y 1.3759 min); con 3 puestos es 0.2505 min, dentro de la meta.\n\n**Recomendación: 3 puestos de atención.**\n\n## Advertencia\n\nEsto es una **estimación por simulación**, no una garantía: no asegura que cada persona o cada réplica individual cumpla la meta de espera. Si deseas, puedo registrar esta decisión (requiere aprobación humana) o ajustar algún parámetro del escenario."
+    },
+    {
+      "tipo": "human",
+      "contenido": "Ahora usa un servicio uniforme entre 1 y 3 minutos; conserva los demás datos"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "call_0e18764260d841eaabbd21b4",
+          "nombre": "configurar_escenario",
+          "args": {
+            "n_personas": 20,
+            "media_llegadas": 2.0,
+            "distribucion_servicio": "uniforme",
+            "minimo_servicio": 1.0,
+            "maximo_servicio": 3.0,
+            "replicas": 30,
+            "semilla_base": 2026
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Escenario fijado: {'n_personas': 20, 'llegadas': {'distribucion': 'exponencial', 'media': 2.0}, 'servicio': {'distribucion': 'uniforme', 'minimo': 1.0, 'moda': None, 'maximo': 3.0}, 'replicas': 30, 'semilla_base': 2026, 'capacidades': [1, 2, 3]}. Resultados, recomendación y decisión anteriores quedaron invalidados; falta simular.",
+      "responde_a": "call_0e18764260d841eaabbd21b4",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "",
+      "llamadas_herramienta": [
+        {
+          "id": "call-69cf8634-7d09-4d81-9b44-1ba58a6bee0a",
+          "nombre": "simular_capacidades",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "tipo": "tool",
+      "contenido": "Réplicas por capacidad: 30. Meta: 1.0 min.\n| Puestos | Espera prom. (min) | Desv. muestral | Salida última prom. (min) | ¿Cumple meta? |\n|---|---|---|---|---|\n| 1 | 3.9833 | 2.8967 | 45.40 | no |\n| 2 | 0.3708 | 0.4436 | 39.06 | sí |\n| 3 | 0.0641 | 0.1149 | 38.74 | sí |\nRecomendación calculada en Python: 2.\nArchivos: {'resultados_csv': 'evidencias\\\\simulaciones\\\\resultados_8fc0bf82f1e1.csv', 'muestras_csv': 'evidencias\\\\simulaciones\\\\muestras_8fc0bf82f1e1.csv', 'resumen_json': 'evidencias\\\\simulaciones\\\\resumen_8fc0bf82f1e1.json'}\nNota: es una estimación por simulación; no garantiza que cada persona o réplica cumpla la meta.",
+      "responde_a": "call-69cf8634-7d09-4d81-9b44-1ba58a6bee0a",
+      "estado": "success"
+    },
+    {
+      "tipo": "ai",
+      "contenido": "## Resultados de la simulación (servicio uniforme 1–3 min)\n\nSe evaluaron 1, 2 y 3 puestos con 30 réplicas cada uno, para 20 personas, llegadas exponenciales (media 2 min), servicio uniforme (mín 1, máx 3 min) y meta de espera de 1.0 min:\n\n| Puestos | Espera promedio (min) | Desv. muestral entre réplicas | ¿Cumple meta (≤ 1.0 min)? |\n|---|---|---|---|\n| 1 | 3.9833 | 2.8967 | No |\n| 2 | 0.3708 | 0.4436 | Sí |\n| 3 | 0.0641 | 0.1149 | Sí |\n\n## Regla de decisión aplicada\n\nSe recomienda el **menor número de puestos cuyo promedio de las esperas promedio de las réplicas sea ≤ la meta (1.0 min)**. Con 1 puesto el promedio es 3.9833 min (supera la meta); con 2 puestos es 0.3708 min (cumple). Por tanto, no es necesario evaluar 3 puestos para la recomendación, aunque también cumple.\n\n**Recomendación: 2 puestos de atención.**\n\n## Advertencia\n\nEsto es una **estimación por simulación**, no una garantía: no asegura que cada persona o cada réplica individual cumpla la meta de espera.\n\n¿Deseas registrar esta decisión o ajustar algún otro parámetro?"
+    }
+  ],
+  "estado_final": {
+    "escenario": {
+      "n_personas": 20,
+      "llegadas": {
+        "distribucion": "exponencial",
+        "media": 2.0
+      },
+      "servicio": {
+        "distribucion": "uniforme",
+        "minimo": 1.0,
+        "moda": null,
+        "maximo": 3.0
+      },
+      "replicas": 30,
+      "semilla_base": 2026,
+      "capacidades": [
+        1,
+        2,
+        3
+      ]
+    },
+    "recomendacion": {
+      "capacidad": 2,
+      "meta": 1.0,
+      "huella": "8fc0bf82f1e1",
+      "promedios": {
+        "1": 3.983347360713538,
+        "2": 0.3708287079969553,
+        "3": 0.06414099068307952
+      },
+      "regla": "menor capacidad con promedio de esperas promedio <= meta"
+    },
+    "decision": null,
+    "resultados_agregados": {
+      "1": {
+        "replicas": 30,
+        "espera_promedio_media": 3.983347360713538,
+        "salida_ultima_media": 45.400094557121214,
+        "espera_desviacion_muestral": 2.896694897348814
+      },
+      "2": {
+        "replicas": 30,
+        "espera_promedio_media": 0.3708287079969553,
+        "salida_ultima_media": 39.06364404149459,
+        "espera_desviacion_muestral": 0.4436246582554822
+      },
+      "3": {
+        "replicas": 30,
+        "espera_promedio_media": 0.06414099068307952,
+        "salida_ultima_media": 38.74017939766921,
+        "espera_desviacion_muestral": 0.11489965983074475
+      }
+    },
+    "archivos": {
+      "resultados_csv": "evidencias\\simulaciones\\resultados_8fc0bf82f1e1.csv",
+      "muestras_csv": "evidencias\\simulaciones\\muestras_8fc0bf82f1e1.csv",
+      "resumen_json": "evidencias\\simulaciones\\resumen_8fc0bf82f1e1.json"
+    }
+  }
+}

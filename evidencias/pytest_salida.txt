@@ -1,0 +1,89 @@
+........................................................................ [ 97%]
+..                                                                       [100%]
+============================== warnings summary ===============================
+.venv-1\Lib\site-packages\langchain_core\utils\pydantic.py:42
+  C:\Users\tiant\OneDrive\Documentos\evaluacion_agente_des\.venv-1\Lib\site-packages\langchain_core\utils\pydantic.py:42: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+    from pydantic.v1 import BaseModel as BaseModelV1
+
+.venv-1\Lib\site-packages\langgraph\checkpoint\base\__init__.py:17
+  C:\Users\tiant\OneDrive\Documentos\evaluacion_agente_des\.venv-1\Lib\site-packages\langgraph\checkpoint\base\__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+    from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests/test_decisiones.py::test_p2_regla_aislada_acepta_igualdad
+PASSED tests/test_decisiones.py::test_p3_ninguna_cumple
+PASSED tests/test_decisiones.py::test_meta_cero_y_exacta
+PASSED tests/test_decisiones.py::test_meta_invalida[-1]
+PASSED tests/test_decisiones.py::test_meta_invalida[nan]
+PASSED tests/test_decisiones.py::test_meta_invalida[inf]
+PASSED tests/test_decisiones.py::test_meta_invalida[True]
+PASSED tests/test_decisiones.py::test_meta_invalida[1]
+PASSED tests/test_distribuciones.py::test_servicios_triangulares_respetan_limites
+PASSED tests/test_distribuciones.py::test_servicios_uniformes_respetan_limites
+PASSED tests/test_distribuciones.py::test_intervalos_exponenciales_no_son_constantes_y_positivos
+PASSED tests/test_distribuciones.py::test_generador_local_no_toca_el_estado_global
+PASSED tests/test_distribuciones.py::test_misma_semilla_mismas_muestras
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_exponencial-args0]
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_exponencial-args1]
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_exponencial-args2]
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_triangular-args3]
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_triangular-args4]
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_triangular-args5]
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_uniforme-args6]
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_uniforme-args7]
+PASSED tests/test_distribuciones.py::test_parametros_invalidos[validar_uniforme-args8]
+PASSED tests/test_historial.py::test_recorte_por_turnos_conserva_pares
+PASSED tests/test_historial.py::test_p12_recorte_dentro_del_ciclo_conserva_estado
+PASSED tests/test_human_review.py::test_p1_p2_p4_p5_hilos_continuidad_meta_y_aislamiento
+PASSED tests/test_human_review.py::test_p5_hilo_nuevo_sin_datos_pide_aclaracion
+PASSED tests/test_human_review.py::test_aislamiento_entre_hilos_con_mismo_agente
+PASSED tests/test_human_review.py::test_p8_aprobar
+PASSED tests/test_human_review.py::test_p9_editar_nota
+PASSED tests/test_human_review.py::test_p9b_edicion_sigue_validandose
+PASSED tests/test_human_review.py::test_p10_rechazar_conserva_resultados
+PASSED tests/test_human_review.py::test_reanudar_exige_revision_pendiente_y_bloquea_mensajes
+PASSED tests/test_human_review.py::test_p11_observador_no_registra_ni_con_ignora_las_reglas
+PASSED tests/test_human_review.py::test_registro_bloqueado_sin_resultados_ni_interrupcion
+PASSED tests/test_human_review.py::test_p3_ninguna_cumple_bloquea_registro
+PASSED tests/test_human_review.py::test_cambio_de_meta_invalida_decision_y_cambio_de_parametros_invalida_resultados
+PASSED tests/test_human_review.py::test_datos_invalidos_via_herramienta_se_rechazan_sin_cambiar_estado
+PASSED tests/test_human_review.py::test_ambiguedad_no_simula
+PASSED tests/test_human_review.py::test_p7_mcp_caido_no_hay_evaluacion_ni_decision
+PASSED tests/test_human_review.py::test_limite_de_pasos_del_agente
+PASSED tests/test_human_review.py::test_fallo_del_proveedor_conserva_estado
+PASSED tests/test_human_review.py::test_rol_y_meta_los_fija_la_aplicacion
+PASSED tests/test_mcp.py::test_descubre_herramienta_y_lee_recurso
+PASSED tests/test_mcp.py::test_resultado_mcp_coincide_con_el_simulador_directo
+PASSED tests/test_mcp.py::test_mcp_rechaza_parametros_invalidos
+PASSED tests/test_mcp.py::test_p7_servidor_no_disponible
+PASSED tests/test_simulador.py::test_p13_regresion_determinista
+PASSED tests/test_simulador.py::test_p1_estructura_y_agregados_verificables
+PASSED tests/test_simulador.py::test_mas_puestos_nunca_aumentan_la_espera_en_la_misma_replica
+PASSED tests/test_simulador.py::test_semillas_y_primera_llegada
+PASSED tests/test_simulador.py::test_p14_reproducibilidad_y_independencia_entre_replicas
+PASSED tests/test_simulador.py::test_p4_cambio_a_uniforme_conserva_llegadas_y_cambia_servicios
+PASSED tests/test_simulador.py::test_una_persona
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos0]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos1]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos2]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos3]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos4]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos5]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos6]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos7]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos8]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos9]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos10]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos11]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos12]
+PASSED tests/test_validaciones.py::test_p6_datos_invalidos_se_rechazan[datos13]
+PASSED tests/test_validaciones.py::test_p6_meta_negativa
+PASSED tests/test_validaciones.py::test_limites_validos_se_aceptan
+PASSED tests/test_validaciones.py::test_limite_de_personas_del_contexto
+PASSED tests/test_validaciones.py::test_p11_observador_no_registra_validacion_directa
+PASSED tests/test_validaciones.py::test_registro_exige_coincidir_con_la_recomendacion_de_python
+PASSED tests/test_validaciones.py::test_registro_exige_resultados_completos_y_vigentes
+PASSED tests/test_validaciones.py::test_registro_bloqueado_si_ninguna_cumple_o_meta_cambio
+74 passed, 2 warnings in 18.11s

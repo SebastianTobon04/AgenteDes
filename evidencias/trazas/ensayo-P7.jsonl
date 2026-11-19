@@ -1,0 +1,5 @@
+{"t": 1795059079.715, "hilo": "ensayo-P7", "tipo": "mensaje_usuario", "datos": {"texto": "evalúa", "rol": "operador", "meta": 1.0}}
+{"t": 1795059079.722, "hilo": "ensayo-P7", "tipo": "herramienta_configurar_escenario", "datos": {"argumentos": {"n_personas": 20, "media_llegadas": 2.0, "distribucion_servicio": "triangular", "minimo_servicio": 1.0, "moda_servicio": 3.0, "maximo_servicio": 5.0}}}
+{"t": 1795059079.723, "hilo": "ensayo-P7", "tipo": "escenario_actualizado", "datos": {"escenario": {"n_personas": 20, "llegadas": {"distribucion": "exponencial", "media": 2.0}, "servicio": {"distribucion": "triangular", "minimo": 1.0, "moda": 3.0, "maximo": 5.0}, "replicas": 30, "semilla_base": 2026, "capacidades": [1, 2, 3]}, "huella": "ea3a8572363e"}}
+{"t": 1795059082.024, "hilo": "ensayo-P7", "tipo": "mcp_error", "datos": {"error": "Servidor MCP no disponible o con fallo en http://127.0.0.1:9/mcp: ConnectError: All connection attempts failed"}}
+{"t": 1795059082.028, "hilo": "ensayo-P7", "tipo": "respuesta_agente", "datos": {"texto": "El servidor MCP no está disponible."}}
